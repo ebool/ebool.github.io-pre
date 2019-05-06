@@ -5,6 +5,7 @@
 
 title: jekyll theme with webstorm
 email: your-email@example.com
+username: ebool # input your name
 description: >- # this means to ignore newlines until "baseurl:"
   jekyll theme with webstorm
 baseurl: "" # the subpath of your site, e.g. /blog
