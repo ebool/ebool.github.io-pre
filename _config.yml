@@ -12,14 +12,15 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
-# If you are using Sass @import statements
+# If you ar e using Sass @import statements
+
+permalink: /:categories/:title/
 
 sass:
   sass_dir: _sass
 
 # Build settings
 
-permalink: /:title/
 markdown: kramdown
 theme: minima
 plugins:
