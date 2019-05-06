@@ -9,6 +9,13 @@
     {{site.title}}
   </div>
   <div>
+    {% for author in site.authors %}
+      <div>author: {{author.name}}</div>
+      <div>url: {{author.url}}</div>
+      <div>position: {{author.position}}</div>
+      <a class="zoombtn" href="{{ site.baseurl }}{{ author.url }}">{{ author.name }}</a>
+    {% endfor %}
+
     {% for post in site.posts %}
     <ul>
       <li class="wow fadeInLeft" data-wow-duration="1.5s">
