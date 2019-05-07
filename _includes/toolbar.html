@@ -3,14 +3,17 @@
     <span class="material-icons icon mr4">folder</span>
     <div>{{site.username}}</div>
   </div>
-  <img src="/assets/ic-img/right-arrow.png" class="ic-right">
-  <div class="flex">
-    <span class="material-icons icon mr4">folder</span>
-    <div>{{page.collection}}</div>
-  </div>
-  <img src="/assets/ic-img/right-arrow.png" class="ic-right">
-  <div class="flex">
-    <span class="material-icons icon mr4">folder</span>
-    <div>{{page.title}}</div>
-  </div>
+  {% assign paths = page.url | split: "/" %}
+  {% for path in paths %}
+    {% if path.size > 0 %}
+    <img src="/assets/ic-img/right-arrow.png" class="ic-right">
+    <div class="flex">
+      <span class="material-icons icon mr4">folder</span>
+      <div>{{path}}</div>
+    </div>
+    {% endif %}
+  {% endfor %}
 </header>
+<script>
+
+</script>
