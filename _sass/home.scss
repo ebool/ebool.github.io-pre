@@ -1,0 +1,14 @@
+.home-body {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+
+  nav {
+    background-color: #2a7ae2;
+    width: 25%;
+  }
+  section {
+    flex: 1;
+    background-color: #e8e8e8;
+  }
+}
