@@ -1,0 +1,22 @@
+
+// color
+
+$win-bg: #3c3f41;
+$font-color: #bbbbbb;
+$font-size: 14px;
+
+// flex
+
+@mixin flexRow ($justify, $align) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flexCol ($justify, $align) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify;
+  align-items: $align;
+}
