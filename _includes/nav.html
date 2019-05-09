@@ -1,11 +1,35 @@
 <div class="nav-cont">
   <div class="left-bar">
-    <div class="button-selected">
+    <div id="drawer-btn" class="button-selected">
       <span class="material-icons small-icon rotate-icon">folder</span>
       <div class="name"><u>1</u>: Project</div>
     </div>
   </div>
-  <div class="content">
+  <div id="drawer" class="content">
     content
   </div>
 </div>
+<script>
+let isDrawer = true;
+let drawer = document.getElementById('drawer');
+let drawerBtn = document.getElementById('drawer-btn');
+
+drawerBtn.addEventListener('click', () => {
+  isDrawer = !isDrawer;
+  setState();
+});
+
+function setState () {
+  if (isDrawer) {
+    drawerBtn.classList.add('button-selected');
+    drawerBtn.className = drawerBtn.className.replace(/\bbutton-default\b/g, '');
+    drawer.style.display = 'block';
+  } else {
+    drawerBtn.classList.add('button-default');
+    drawerBtn.className = drawerBtn.className.replace(/\bbutton-selected\b/g, '');
+    drawer.style.display = 'none';
+  }
+}
+
+
+</script>
