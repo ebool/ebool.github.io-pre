@@ -1,0 +1,59 @@
+$left-bar-width: 18px;
+
+.nav-cont {
+  background-color: $win-bg;
+  max-height: 100%;
+  height: 100%;
+  overflow: auto;
+  @include flexRow(flex-start, flex-start);
+  align-items: stretch;
+
+  .left-bar {
+    width: $left-bar-width;
+    background-color: $win-bg;
+
+    %button {
+      user-select: none;
+      width: 110px;
+      height: $left-bar-width;
+      @include flexRow(center, center);
+      transform: rotate(-90deg) translateX(-110px);
+      transform-origin: top left;
+
+      .rotate-icon {
+        transform: rotate(90deg) translateY(4px);
+      }
+
+      .name {
+        font-size: 14px;
+        color: $font-color;
+        white-space: pre;
+      }
+    }
+
+    .button-default {
+      @extend %button;
+
+      &:hover {
+        background-color: $win-bg-hover;
+      }
+      .name {
+        color: $font-color;
+      }
+    }
+
+    .button-selected {
+      @extend %button;
+      background-color: $win-bg-selected;
+
+      .name {
+        color: $font-color-selected;
+      }
+    }
+  }
+  .content {
+    width: 200px;
+    flex: 1;
+    background-color: rebeccapurple;
+  }
+}
