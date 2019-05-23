@@ -7,10 +7,13 @@ $left-bar-width: 18px;
   overflow: auto;
   @include flexRow(flex-start, flex-start);
   align-items: stretch;
+  color: $font-color;
+  font-size: $font-size;
 
   .left-bar {
     width: $left-bar-width;
     background-color: $win-bg;
+    border-top: 1px solid $border-color;
 
     %button {
       user-select: none;
@@ -51,9 +54,38 @@ $left-bar-width: 18px;
       }
     }
   }
-  .content {
-    width: 200px;
-    flex: 1;
-    background-color: rebeccapurple;
+
+  .border {
+    width: 1px;
+    background-color: $border-color;
   }
+
+  .file-explorer-cont {
+
+    width: 200px;
+    background-color: $win-bg;
+    position: relative;
+
+    .content-toolbar {
+      box-sizing: border-box;
+      height: 26px;
+      background-color: $win-bg;
+      border: 1px solid #323232;
+      border-left: 0;
+      padding-left: 10px;
+
+      @include flexRow(flex-start, center);
+    }
+  }
+
+}
+.nav-cont:focus {
+  outline: none;
+
+  .file-explorer-cont {
+    .content-toolbar {
+      background-color: #3b4754;
+    }
+  }
+
 }
