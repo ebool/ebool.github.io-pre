@@ -12,6 +12,11 @@
     <div class="content-toolbar">
       <div class="project-icon mr6"></div>
       <div class="label">Project</div>
+      <div class="spacer"></div>
+      <div class="button mr4"><img src="/assets/ic-img/focus.png" class="ic-default hover"></div>
+      <div class="button mr4"><img src="/assets/ic-img/fold.png" class="ic-default"></div>
+      <div class="border mr4"></div>
+      <div id="close-btn" class="button mr4"><img src="/assets/ic-img/remove.png" class="ic-default">
     </div>
   </div>
 </div>
@@ -19,11 +24,17 @@
 let isDrawer = true;
 let drawer = document.getElementById('drawer');
 let drawerBtn = document.getElementById('drawer-btn');
+let closeBtn = document.getElementById('close-btn');
+console.log(closeBtn);
 
-drawerBtn.addEventListener('click', () => {
+drawerBtn.addEventListener('click', switchDrawer);
+closeBtn.addEventListener('click', switchDrawer);
+
+function switchDrawer () {
   isDrawer = !isDrawer;
   setState();
-});
+}
+
 
 function setState () {
   if (isDrawer) {
