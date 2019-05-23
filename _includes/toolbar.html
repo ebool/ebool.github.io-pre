@@ -1,6 +1,6 @@
 <div class="toolbar-cont flex">
   <div class="flex">
-    <span class="material-icons icon mr4">folder</span>
+    <img src="/assets/ic-img/folder.png" class="ic-default mr4">
     <div>{{site.username}}</div>
   </div>
   {% assign paths = page.url | split: "/" %}
@@ -8,7 +8,7 @@
     {% if path.size > 0 %}
     <img src="/assets/ic-img/right-arrow.png" class="ic-right">
     <div class="flex">
-      <span class="material-icons icon mr4">folder</span>
+      <img src="/assets/ic-img/folder.png" class="ic-default mr4">
       <div>{{path}}</div>
     </div>
     {% endif %}
