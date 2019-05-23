@@ -5,6 +5,7 @@
   font-size: $font-size;
   padding: 0 8px;
   user-select: none;
+  border-bottom: 1px solid $border-color;
 }
 .flex {
   @include flexRow(flex-start, center);
