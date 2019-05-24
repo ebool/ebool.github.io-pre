@@ -14,12 +14,12 @@
       <div class="label">Project</div>
       <div class="spacer"></div>
       <div class="button mr4"><img src="/assets/ic-img/focus.png" class="ic-default hover" /></div>
-      <div class="button mr4"><img src="/assets/ic-img/fold.png" class="ic-default" /></div>
+      <div class="button mr4" onclick="allFold()"><img src="/assets/ic-img/fold.png" class="ic-default" /></div>
       <div class="border mr4"></div>
       <div id="close-btn" class="button mr4"><img src="/assets/ic-img/remove.png" class="ic-default" /></div>
     </div>
     <div class="explorer-cont">
-      <div class="item rotate" onclick="clickItem(this)">
+      <div class="item rotate root" onclick="clickItem(this)">
         <img src="/assets/ic-img/folder_fold.png" class="ic-default mr4 arrow" />
         <img src="/assets/ic-img/folder.png" class="ic-default mr4" />
         <div class="bold">{{site.username}}</div>
@@ -27,7 +27,7 @@
 
       {% for c in site.collections %}
         {% if c.label != 'posts' %}
-        <div class="item pl16" onclick="clickItem(this, '{{c.label}}')">
+        <div class="item pl16 page-folder" onclick="clickItem(this, '{{c.label}}')">
           <img src="/assets/ic-img/folder_fold.png" class="ic-default arrow mr4" onclick="switchFold(this, '{{c.label}}')"/>
           <img src="/assets/ic-img/folder.png" class="ic-default mr4" />
           <div>{{c.label}}</div>
@@ -105,6 +105,16 @@ function switchFold (e, name) {
     target.classList.add('rotate');
     isFoldList[name] = true;
   }
+}
+
+function allFold () {
+  // arrow 회전
+  let pageFolder = document.getElementsByClassName('page-folder');
+  for (let i of pageFolder) i.classList.remove('rotate');
+
+  // 하위 파일 숨기기
+  let list = Object.keys(isFoldList);
+  for (let name of list) for (let i of document.getElementsByClassName(name)) i.classList.add('none');
 }
 
 function setState () {
