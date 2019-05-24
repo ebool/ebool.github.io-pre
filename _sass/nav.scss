@@ -102,6 +102,10 @@ $left-bar-width: 18px;
         height: 20px;
         @include flexRow(flex-start, center);
       }
+
+      .selected {
+        background-color: #0d293e;
+      }
     }
 
   }
@@ -111,8 +115,15 @@ $left-bar-width: 18px;
   outline: none;
 
   .file-explorer-cont {
+
     .explorer-toolbar {
       background-color: #3b4754;
+    }
+
+    .explorer-cont {
+      .selected {
+        background-color: #2f65ca;
+      }
     }
   }
 

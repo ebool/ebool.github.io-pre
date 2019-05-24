@@ -1,4 +1,4 @@
-<div class="nav-cont" tabindex="0">
+<div class="nav-cont" id="nav-cont" tabindex="0">
   <div class="left-bar">
     <div id="drawer-btn" class="button-selected">
       <span class="material-icons small-icon rotate-icon">folder</span>
@@ -19,38 +19,47 @@
       <div id="close-btn" class="button mr4"><img src="/assets/ic-img/remove.png" class="ic-default" /></div>
     </div>
     <div class="explorer-cont">
-      <div class="item">
+      <div class="item" onclick="clickItem(this)">
         <img src="/assets/ic-img/folder_fold.png" class="ic-default mr4" />
         <img src="/assets/ic-img/folder.png" class="ic-default mr4" />
         <div class="bold">{{site.username}}</div>
       </div>
 
       {% for c in site.collections %}
-      <div class="item pl16">
+      {% if c.label != 'posts' %}
+      <div class="item pl16" onclick="clickItem(this)">
         <img src="/assets/ic-img/folder_fold.png" class="ic-default mr4" />
         <img src="/assets/ic-img/folder.png" class="ic-default mr4" />
         <div>{{c.label}}</div>
       </div>
+      {% endif %}
         {% for post in site[c.label] %}
-        <div class="item pl54">
-          <img src="/assets/ic-img/html.png" class="ic-default mr4" />
-          <div>{{post.title}}.html</div>
-        </div>
-        {% endfor%}
+          {% if page.url contains c.label and page.url contains post.title %}
+          <div class="item pl54 selected" onclick="clickItem(this)">
+          {% else %}
+          <div class="item pl54" onclick="clickItem(this)">
+          {% endif %}
+            <img src="/assets/ic-img/html.png" class="ic-default mr4" />
+            <div>{{post.title}}.html</div>
+          </div>
+        {% endfor %}
       {% endfor %}
     </div>
   </div>
 </div>
 <script>
 let isDrawer = true;
+let navCont = document.getElementById('nav-cont');
 let drawer = document.getElementById('drawer');
 let drawerBtn = document.getElementById('drawer-btn');
 let closeBtn = document.getElementById('close-btn');
-let folderStructure = parseFolderStructure(`{{site.collections}}`);
+// let folderStructure = {
+//   '{{site.username}}': parseFolderStructure(`{{site.collections}}`)
+// };
+let previousSelected;
 
-console.log(folderStructure);
-
-
+navCont.focus();
+previousSelected = document.getElementsByClassName('selected')[0];
 
 drawerBtn.addEventListener('click', switchDrawer);
 closeBtn.addEventListener('click', switchDrawer);
@@ -58,6 +67,12 @@ closeBtn.addEventListener('click', switchDrawer);
 function switchDrawer () {
   isDrawer = !isDrawer;
   setState();
+}
+
+function clickItem (e) {
+  if (previousSelected) previousSelected.classList.remove('selected');
+  e.classList.add('selected');
+  previousSelected = e;
 }
 
 function setState () {
@@ -75,10 +90,11 @@ function setState () {
 
 // 최악의 코드가 나왔다.... 나중에 리팩토링해야지...
 function parseFolderStructure (target) {
-  let res = {}
+  let res = {};
   for (let i of target.split('][')) {
     let c = getFolderInfo(i.replace(/\[|\]/g, '').split(','));
-    res[Object.keys(c)[0]] = c;
+    let key = Object.keys(c)[0];
+    res[key] = c[key];
   }
   return res;
 }

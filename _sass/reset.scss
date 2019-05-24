@@ -9,3 +9,17 @@ body {
 body {
   @include flexCol(center, stretch);
 }
+
+a {
+  color: $font-color;
+  text-decoration: none;
+  outline: none;
+  cursor: default;
+}
+
+a:hover, a:active {
+  cursor: default;
+  color: $font-color;
+  text-decoration: none;
+  background-color:#f59000;
+}
