@@ -61,17 +61,17 @@ $left-bar-width: 18px;
   }
 
   .file-explorer-cont {
-
     width: 200px;
     background-color: $win-bg;
     position: relative;
+    border-right: 1px solid #323232;
 
     .explorer-toolbar {
       box-sizing: border-box;
       height: 26px;
       background-color: $win-bg;
-      border: 1px solid #323232;
-      border-left: 0;
+      border-top: 1px solid #323232;
+      border-bottom: 1px solid #323232;
       padding-left: 10px;
 
       @include flexRow(flex-start, center);
