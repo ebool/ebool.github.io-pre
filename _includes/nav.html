@@ -19,25 +19,25 @@
       <div id="close-btn" class="button mr4"><img src="/assets/ic-img/remove.png" class="ic-default" /></div>
     </div>
     <div class="explorer-cont">
-      <div class="item" onclick="clickItem(this)">
-        <img src="/assets/ic-img/folder_fold.png" class="ic-default mr4" />
+      <div class="item rotate" onclick="clickItem(this)">
+        <img src="/assets/ic-img/folder_fold.png" class="ic-default mr4 arrow" />
         <img src="/assets/ic-img/folder.png" class="ic-default mr4" />
         <div class="bold">{{site.username}}</div>
       </div>
 
       {% for c in site.collections %}
-      {% if c.label != 'posts' %}
-      <div class="item pl16" onclick="clickItem(this)">
-        <img src="/assets/ic-img/folder_fold.png" class="ic-default mr4" />
-        <img src="/assets/ic-img/folder.png" class="ic-default mr4" />
-        <div>{{c.label}}</div>
-      </div>
-      {% endif %}
+        {% if c.label != 'posts' %}
+        <div class="item pl16" onclick="clickItem(this, '{{c.label}}')">
+          <img src="/assets/ic-img/folder_fold.png" class="ic-default arrow mr4" onclick="switchFold(this, '{{c.label}}')"/>
+          <img src="/assets/ic-img/folder.png" class="ic-default mr4" />
+          <div>{{c.label}}</div>
+        </div>
+        {% endif %}
         {% for post in site[c.label] %}
           {% if page.url contains c.label and page.url contains post.title %}
-          <div class="item pl54 selected" onclick="clickItem(this)">
+          <div class="item pl54 selected none {{c.label}}" onclick="clickItem(this)">
           {% else %}
-          <div class="item pl54" onclick="clickItem(this)">
+          <div class="item pl54 none {{c.label}}" onclick="clickItem(this)">
           {% endif %}
             <img src="/assets/ic-img/html.png" class="ic-default mr4" />
             <div>{{post.title}}.html</div>
@@ -57,6 +57,7 @@ let closeBtn = document.getElementById('close-btn');
 //   '{{site.username}}': parseFolderStructure(`{{site.collections}}`)
 // };
 let previousSelected;
+let isFoldList = {};
 
 navCont.focus();
 previousSelected = document.getElementsByClassName('selected')[0];
@@ -69,10 +70,41 @@ function switchDrawer () {
   setState();
 }
 
-function clickItem (e) {
+let preClickTime = 0;
+
+function clickItem (e, name) {
+  if (isDBClick()) {
+    switchFold(e, name);
+    return;
+  }
+  focusItem(e);
+}
+
+function focusItem (e) {
   if (previousSelected) previousSelected.classList.remove('selected');
   e.classList.add('selected');
   previousSelected = e;
+}
+
+function isDBClick () {
+  let curTime = +new Date();
+  let res = curTime - preClickTime < 300;
+  preClickTime = curTime;
+  return res;
+}
+
+function switchFold (e, name) {
+  let target = e.children.length > 0 ? e : e.parentNode;
+  let list = document.getElementsByClassName(name);
+  if (isFoldList[name]) { // open -> close
+    for (let i of list) i.classList.add('none');
+    target.classList.remove('rotate');
+    isFoldList[name] = false;
+  } else { //close -> open
+    for (let i of list) i.classList.remove('none');
+    target.classList.add('rotate');
+    isFoldList[name] = true;
+  }
 }
 
 function setState () {

@@ -103,6 +103,16 @@ $left-bar-width: 18px;
         @include flexRow(flex-start, center);
       }
 
+      .none {
+        display: none;
+      }
+
+      .rotate {
+        .arrow {
+          transform: rotate(90deg);
+        }
+      }
+
       .selected {
         background-color: #0d293e;
       }
