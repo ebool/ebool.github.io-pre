@@ -9,14 +9,35 @@
   <div class="border"></div>
 
   <div id="drawer" class="file-explorer-cont">
-    <div class="content-toolbar">
+    <div class="explorer-toolbar">
       <div class="project-icon mr6"></div>
       <div class="label">Project</div>
       <div class="spacer"></div>
-      <div class="button mr4"><img src="/assets/ic-img/focus.png" class="ic-default hover"></div>
-      <div class="button mr4"><img src="/assets/ic-img/fold.png" class="ic-default"></div>
+      <div class="button mr4"><img src="/assets/ic-img/focus.png" class="ic-default hover" /></div>
+      <div class="button mr4"><img src="/assets/ic-img/fold.png" class="ic-default" /></div>
       <div class="border mr4"></div>
-      <div id="close-btn" class="button mr4"><img src="/assets/ic-img/remove.png" class="ic-default">
+      <div id="close-btn" class="button mr4"><img src="/assets/ic-img/remove.png" class="ic-default" /></div>
+    </div>
+    <div class="explorer-cont">
+      <div class="item">
+        <img src="/assets/ic-img/folder_fold.png" class="ic-default mr4" />
+        <img src="/assets/ic-img/folder.png" class="ic-default mr4" />
+        <div class="bold">{{site.username}}</div>
+      </div>
+
+      {% for c in site.collections %}
+      <div class="item pl16">
+        <img src="/assets/ic-img/folder_fold.png" class="ic-default mr4" />
+        <img src="/assets/ic-img/folder.png" class="ic-default mr4" />
+        <div>{{c.label}}</div>
+      </div>
+        {% for post in site[c.label] %}
+      <div class="item pl54">
+        <img src="/assets/ic-img/html.png" class="ic-default mr4" />
+        <div>{{post.title}}.html</div>
+      </div>
+        {% endfor%}
+      {% endfor %}
     </div>
   </div>
 </div>
@@ -25,7 +46,6 @@ let isDrawer = true;
 let drawer = document.getElementById('drawer');
 let drawerBtn = document.getElementById('drawer-btn');
 let closeBtn = document.getElementById('close-btn');
-console.log(closeBtn);
 
 drawerBtn.addEventListener('click', switchDrawer);
 closeBtn.addEventListener('click', switchDrawer);
@@ -34,7 +54,6 @@ function switchDrawer () {
   isDrawer = !isDrawer;
   setState();
 }
-
 
 function setState () {
   if (isDrawer) {

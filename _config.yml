@@ -16,8 +16,6 @@ github_username:  jekyll
 # If you ar e using Sass @import statements
 
 collections:
-  authors:
-    output: true
 
 sass:
   sass_dir: _sass

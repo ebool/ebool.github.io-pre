@@ -66,7 +66,7 @@ $left-bar-width: 18px;
     background-color: $win-bg;
     position: relative;
 
-    .content-toolbar {
+    .explorer-toolbar {
       box-sizing: border-box;
       height: 26px;
       background-color: $win-bg;
@@ -95,6 +95,15 @@ $left-bar-width: 18px;
         background-color: #515151;
       }
     }
+    .explorer-cont {
+      user-select: none;
+
+      .item {
+        height: 20px;
+        @include flexRow(flex-start, center);
+      }
+    }
+
   }
 
 }
@@ -102,7 +111,7 @@ $left-bar-width: 18px;
   outline: none;
 
   .file-explorer-cont {
-    .content-toolbar {
+    .explorer-toolbar {
       background-color: #3b4754;
     }
   }
