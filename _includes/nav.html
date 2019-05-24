@@ -13,7 +13,7 @@
       <div class="project-icon mr6"></div>
       <div class="label">Project</div>
       <div class="spacer"></div>
-      <div class="button mr4"><img src="/assets/ic-img/focus.png" class="ic-default hover" /></div>
+      <!--<div class="button mr4" onclick="onFocus('{{page.url}}')"><img src="/assets/ic-img/focus.png" class="ic-default hover" /></div>-->
       <div class="button mr4" onclick="allFold()"><img src="/assets/ic-img/fold.png" class="ic-default" /></div>
       <div class="border mr4"></div>
       <div id="close-btn" class="button mr4"><img src="/assets/ic-img/remove.png" class="ic-default" /></div>
@@ -115,6 +115,10 @@ function allFold () {
   // 하위 파일 숨기기
   let list = Object.keys(isFoldList);
   for (let name of list) for (let i of document.getElementsByClassName(name)) i.classList.add('none');
+}
+
+function onFocus (url) {
+  console.log(url);
 }
 
 function setState () {
