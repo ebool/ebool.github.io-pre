@@ -36,12 +36,15 @@
         {% for post in site[c.label] %}
           {% if page.url contains c.label and page.url contains post.title %}
           <div class="item pl54 selected none {{c.label}}" onclick="clickItem(this)">
-          {% else %}
-          <div class="item pl54 none {{c.label}}" onclick="clickItem(this)">
-          {% endif %}
             <img src="/assets/ic-img/html.png" class="ic-default mr4" />
             <div>{{post.title}}.html</div>
           </div>
+          {% else %}
+          <div class="item pl54 none {{c.label}}" onclick="clickItem(this)">
+            <img src="/assets/ic-img/html.png" class="ic-default mr4" />
+            <div>{{post.title}}.html</div>
+          </div>
+          {% endif %}
         {% endfor %}
       {% endfor %}
     </div>
@@ -155,6 +158,4 @@ function getFolderInfo (array) {
   }
   return res;
 }
-
-
 </script>
