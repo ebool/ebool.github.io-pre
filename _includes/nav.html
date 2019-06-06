@@ -135,27 +135,4 @@ function setState () {
     drawer.style.display = 'none';
   }
 }
-
-
-// 최악의 코드가 나왔다.... 나중에 리팩토링해야지...
-function parseFolderStructure (target) {
-  let res = {};
-  for (let i of target.split('][')) {
-    let c = getFolderInfo(i.replace(/\[|\]/g, '').split(','));
-    let key = Object.keys(c)[0];
-    res[key] = c[key];
-  }
-  return res;
-}
-function getFolderInfo (array) {
-  let res = {};
-  for (let i of array) {
-    let parsed = i.trim().split(' ');
-    let collection = parsed[2].replace('collection=', '').replace('>', '');
-    let post = parsed[1].replace(`_${collection}/`, '').replace('.markdown', '');
-    if (Object.keys(res).indexOf(collection) < 0) res[collection] = [];
-    res[collection].push(post);
-  }
-  return res;
-}
 </script>
