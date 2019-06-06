@@ -32,7 +32,7 @@ function drawSectionHeader (node) {
     <div class="tab ${i.isFocused ? 'selected' : ''}">
       <img src="/assets/ic-img/html.png" class="ic-default mr4">
       <div class="mr4">${paths[paths.length - 1]}.html</div>
-      <span class="material-icons small-icon close-icon">close</span>
+      <span class="material-icons small-icon close-icon" onclick="closeTab('${i.path}')">close</span>
       <div class="bottom-border"></div>
     </div>
     `
@@ -40,7 +40,24 @@ function drawSectionHeader (node) {
   node.innerHTML = children;
 }
 
+function closeTab (path) {
+  let res = window.route.filter(i => i.path === path)[0];
+  let idx = window.route.indexOf(res);
+  window.route.splice(idx, 1);
+
+  // 현재의 자식이 꺼져서 focused 된 것이 없을 경우
+  let focusedItem = window.route.filter(i => i.isFocused)[0];
+  if (window.route.length > 0 && !focusedItem) {
+    if (idx === 0) window.route[0].isFocused = true;
+    else window.route[idx - 1].isFocused = true;
+  }
+
+  refresh();
+}
+
 function drawToolbar (node) {
+  if (window.route.length === 0) return;
+
   let res = window.route.filter(i => i.isFocused)[0];
   let path = res.path.split('/');
   let children = '';
@@ -55,5 +72,4 @@ function drawToolbar (node) {
     `
   }
   node.innerHTML = children;
-
 }
