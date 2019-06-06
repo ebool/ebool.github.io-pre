@@ -1,5 +1,10 @@
 window.route = [];
 
+function focusSection () {
+  let sectionCont = document.getElementById('section-cont');
+  sectionCont.focus();
+}
+
 function refresh () {
   let toolbarCont = document.getElementById('toolbar-cont');
   removeChildNode(toolbarCont);

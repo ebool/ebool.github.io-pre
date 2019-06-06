@@ -106,6 +106,7 @@ function openFile (name) {
     if (i.path === name) {
       i.isFocused = true;
       refresh();
+      focusSection();
       return;
     }
   }
@@ -115,6 +116,7 @@ function openFile (name) {
     isFocused: true
   });
   refresh();
+  focusSection();
 }
 
 function switchFold (e, name) {
