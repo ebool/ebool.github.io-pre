@@ -29,10 +29,10 @@ function drawSectionHeader (node) {
     let paths = i.path.split('/');
 
     children += `
-    <div class="tab ${i.isFocused ? 'selected' : ''}">
+    <div class="tab ${i.isFocused ? 'selected' : ''}" onclick="focusTab('${i.path}')">
       <img src="/assets/ic-img/html.png" class="ic-default mr4">
       <div class="mr4">${paths[paths.length - 1]}.html</div>
-      <span class="material-icons small-icon close-icon" onclick="closeTab('${i.path}')">close</span>
+      <span class="material-icons small-icon close-icon" onclick="closeTab(event, '${i.path}')">close</span>
       <div class="bottom-border"></div>
     </div>
     `
@@ -40,7 +40,7 @@ function drawSectionHeader (node) {
   node.innerHTML = children;
 }
 
-function closeTab (path) {
+function closeTab (e, path) {
   let res = window.route.filter(i => i.path === path)[0];
   let idx = window.route.indexOf(res);
   window.route.splice(idx, 1);
@@ -51,6 +51,16 @@ function closeTab (path) {
     if (idx === 0) window.route[0].isFocused = true;
     else window.route[idx - 1].isFocused = true;
   }
+
+  e.stopPropagation();
+
+  refresh();
+}
+
+function focusTab (path) {
+  window.route.map((i) => {
+    i.isFocused = i.path === path;
+  });
 
   refresh();
 }
