@@ -24,7 +24,7 @@ function drawSectionHeader (node) {
     let paths = i.path.split('/');
 
     children += `
-    <div class="tab">
+    <div class="tab ${i.isFocused ? 'selected' : ''}">
       <img src="/assets/ic-img/html.png" class="ic-default mr4">
       <div class="mr4">${paths[paths.length - 1]}.html</div>
       <span class="material-icons small-icon close-icon">close</span>
