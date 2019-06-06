@@ -3,17 +3,8 @@
     <img src="/assets/ic-img/folder.png" class="ic-default mr4">
     <div>{{site.username}}</div>
   </div>
-  {% assign paths = page.url | split: "/" %}
-  {% for path in paths %}
-    {% if path.size > 0 %}
-    <img src="/assets/ic-img/right-arrow.png" class="ic-right">
-    <div class="flex">
-      <img src="/assets/ic-img/folder.png" class="ic-default mr4">
-      <div>{{path}}</div>
-    </div>
-    {% endif %}
-  {% endfor %}
+  <div class="flex" id="toolbar-cont">
+  </div>
 </div>
 <script>
-
 </script>

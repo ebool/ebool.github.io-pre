@@ -35,12 +35,12 @@
         {% endif %}
         {% for post in site[c.label] %}
           {% if page.url contains c.label and page.url contains post.title %}
-          <div class="item pl54 selected none {{c.label}}" onclick="clickItem(this)">
+          <div class="item pl54 selected none {{c.label}}" onclick="clickItem(this, '{{c.label}}/{{post.title}}', true)">
             <img src="/assets/ic-img/html.png" class="ic-default mr4" />
             <div>{{post.title}}.html</div>
           </div>
           {% else %}
-          <div class="item pl54 none {{c.label}}" onclick="clickItem(this)">
+          <div class="item pl54 none {{c.label}}" onclick="clickItem(this, '{{c.label}}/{{post.title}}', true)">
             <img src="/assets/ic-img/html.png" class="ic-default mr4" />
             <div>{{post.title}}.html</div>
           </div>
@@ -75,9 +75,10 @@ function switchDrawer () {
 
 let preClickTime = 0;
 
-function clickItem (e, name) {
+function clickItem (e, name, isFile) {
   if (isDBClick()) {
-    switchFold(e, name);
+    if (isFile) openFile(name);
+    else switchFold(e, name);
     return;
   }
   focusItem(e);
@@ -94,6 +95,26 @@ function isDBClick () {
   let res = curTime - preClickTime < 300;
   preClickTime = curTime;
   return res;
+}
+
+function openFile (name) {
+  // all isFocused makes false;
+  for (let i of window.route) i.isFocused = false;
+
+  // check same file
+  for (let i of window.route) {
+    if (i.path === name) {
+      i.isFocused = true;
+      refresh();
+      return;
+    }
+  }
+
+  window.route.push({
+    path: name,
+    isFocused: true
+  });
+  refresh();
 }
 
 function switchFold (e, name) {
