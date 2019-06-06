@@ -18,61 +18,37 @@ function drawSectionHeader (node) {
     return;
   }
   else node.classList.remove('none');
+  let children = '';
 
   for (let i of window.route) {
-    let tab = document.createElement('div');
-    tab.classList.add('tab');
-
-    let ic = document.createElement('img');
-    ic.src = '/assets/ic-img/html.png';
-    ic.classList.add('ic-default', 'mr4');
-
-    let name = document.createElement('div');
-    name.classList.add('mr4');
     let paths = i.path.split('/');
-    name.innerText = `${paths[paths.length - 1]}.html`;
 
-    let close = document.createElement('span');
-    close.classList.add('material-icons', 'small-icon', 'close-icon');
-    close.innerText = 'close';
-
-    let border = document.createElement('div');
-    border.classList.add('bottom-border');
-
-    tab.appendChild(ic);
-    tab.appendChild(name);
-    tab.appendChild(close);
-    tab.appendChild(border);
-
-    node.appendChild(tab);
+    children += `
+    <div class="tab">
+      <img src="/assets/ic-img/html.png" class="ic-default mr4">
+      <div class="mr4">${paths[paths.length - 1]}.html</div>
+      <span class="material-icons small-icon close-icon">close</span>
+      <div class="bottom-border"></div>
+    </div>
+    `
   }
+  node.innerHTML = children;
 }
 
 function drawToolbar (node) {
   let res = window.route.filter(i => i.isFocused)[0];
-
   let path = res.path.split('/');
+  let children = '';
 
   for (let i = 0; i < path.length; i++) {
-    let arrow = document.createElement('img');
-    arrow.src = '/assets/ic-img/right-arrow.png';
-    arrow.classList.add('ic-right');
-
-    let div = document.createElement('div');
-    div.classList.add('flex');
-
-    let ic = document.createElement('img');
-    ic.src = i < path.length - 1 ? '/assets/ic-img/folder.png' : '/assets/ic-img/html.png';
-    ic.classList.add('ic-default', 'mr4');
-
-    let name = document.createElement('div');
-    name.innerText = i < path.length - 1 ? path[i] : path[i] + '.html';
-
-    div.appendChild(ic);
-    div.appendChild(name);
-
-    node.appendChild(arrow);
-    node.appendChild(div);
+    children += `
+      <img src="/assets/ic-img/right-arrow.png" class="ic-right">
+      <div class="flex">
+        <img class="ic-default mr4" src="${i < path.length - 1 ? '/assets/ic-img/folder.png' : '/assets/ic-img/html.png'}">
+        <div>${i < path.length - 1 ? path[i] : path[i] + '.html'}</div>
+      </div>
+    `
   }
+  node.innerHTML = children;
 
 }
