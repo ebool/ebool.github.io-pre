@@ -1,27 +1,15 @@
-.header-cont {
+.toolbar-cont {
   height: 30px;
-  background-color: #3c3f41;
-  color: #bbbbbb;
+  background-color: $win-bg;
+  color: $font-color;
+  font-size: $font-size;
   padding: 0 8px;
-  font-size: 14px;
   user-select: none;
 }
 .flex {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.icon {
-  font-size: 16px !important;
-  color: #87939a;
-}
-.mr4 {
-  margin-right: 4px;
+  @include flexRow(flex-start, center);
 }
 .ic-right {
   width: 15px;
   height: 30px;
-}
-.ml8 {
-  margin-left: 8px;
 }

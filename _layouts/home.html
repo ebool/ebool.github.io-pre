@@ -4,28 +4,19 @@
   {% include head.html %}
 </head>
 <body>
-  {% include toolbar.html %}
-  <div>
-    {{site.title}}
+  <header>
+    {% include toolbar.html %}
+  </header>
+  <div class="home-body">
+    <nav>
+      {% include nav.html %}
+    </nav>
+    <section>
+      {% include section.html %}
+    </section>
   </div>
-  <div>
-    {% for post in site.posts %}
-    <ul>
-      <li class="wow fadeInLeft" data-wow-duration="1.5s">
-        <a class="zoombtn" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-        <div>site url: {{site.baseurl}}</div>
-        <div>post.url: {{post.url}}</div>
-        <p>{{ post.excerpt }}</p>
-        <a href="{{ site.baseurl }}{{ post.url }}" class="btn zoombtn">Read More</a>
-      </li>
-    </ul>
-    {% endfor %}
-  </div>
-<section>
-  This is the content of my page
-</section>
-<footer>
-  &copy; to me
-</footer>
+  <footer>
+    created by ebool
+  </footer>
 </body>
 </html>
