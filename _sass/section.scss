@@ -1,11 +1,11 @@
 .section-cont {
   outline: none;
+  color: $font-color;
+  font-size: $font-size;
 
   .section-header-cont {
     background-color: $win-bg;
     height: 26px;
-    color: $font-color;
-    font-size: $font-size;
     box-sizing: border-box;
     border-top: 1px solid $border-color;
     border-bottom: 1px solid $border-color;
@@ -41,6 +41,10 @@
         height: 3px;
       }
     }
+  }
+
+  .section-content-cont {
+
   }
 }
 .section-cont:focus {

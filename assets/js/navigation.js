@@ -13,9 +13,24 @@ function refresh () {
   let sectionHeaderCont = document.getElementById('section-header-cont');
   removeChildNode(sectionHeaderCont);
   drawSectionHeader(sectionHeaderCont);
+
+  let sectionContentCont = document.getElementById('section-content-cont');
+  drawSectionContent(sectionContentCont);
+
 }
 
 function removeChildNode (node) { while (node.firstChild) node.removeChild(node.firstChild); }
+
+function drawSectionContent (node) {
+  if (window.route.length === 0) return;
+
+  let res = window.route.filter(i => i.isFocused)[0];
+
+  for (let i of node.children) {
+    if (res.path === i.id) i.classList.remove('none');
+    else i.classList.add('none');
+  }
+}
 
 function drawSectionHeader (node) {
   if (window.route.length === 0) {
