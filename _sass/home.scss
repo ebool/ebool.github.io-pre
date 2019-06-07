@@ -2,13 +2,23 @@
   flex: 1;
   display: flex;
   align-items: stretch;
+  max-height: 100%;
 
   nav {
-    background-color: #2a7ae2;
-    width: 25%;
+    max-height: 100%;
   }
   section {
     flex: 1;
-    background-color: #e8e8e8;
+    background-color: #282829;
   }
+
+}
+footer {
+  height: 16px;
+  padding-right: 12px;
+  background-color: $win-bg;
+  border-top: 1px solid $border-color;
+  font-size: $font-size;
+  color: $font-color;
+  @include flexRow(flex-end, center);
 }

@@ -18,6 +18,8 @@ github_username:  jekyll
 collections:
   authors:
     output: true
+  javascript:
+    output: true
 
 sass:
   sass_dir: _sass
