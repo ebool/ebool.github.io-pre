@@ -15,21 +15,20 @@ function refresh () {
   drawSectionHeader(sectionHeaderCont);
 
   let sectionContentCont = document.getElementById('section-content-cont');
+  unShowChildNode(sectionContentCont)
   drawSectionContent(sectionContentCont);
 
 }
 
 function removeChildNode (node) { while (node.firstChild) node.removeChild(node.firstChild); }
 
+function unShowChildNode (node) { for (let i of node.children) i.classList.add('none'); }
+
 function drawSectionContent (node) {
   if (window.route.length === 0) return;
 
   let res = window.route.filter(i => i.isFocused)[0];
-
-  for (let i of node.children) {
-    if (res.path === i.id) i.classList.remove('none');
-    else i.classList.add('none');
-  }
+  for (let i of node.children) if (res.path === i.id) i.classList.remove('none');
 }
 
 function drawSectionHeader (node) {
