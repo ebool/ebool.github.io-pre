@@ -1,0 +1,18 @@
+.post-cont {
+  padding: 4rem 3rem;
+  overflow: auto;
+  box-sizing: border-box;
+  height: 100%;
+
+  .title {
+    font-size: 44px;
+  }
+
+  .date {
+    font-size: 16px;
+  }
+
+  .content {
+    padding-left: 2rem;
+  }
+}

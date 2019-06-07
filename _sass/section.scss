@@ -1,3 +1,5 @@
+$tab-size: 26px;
+
 .section-cont {
   outline: none;
   color: $font-color;
@@ -8,7 +10,7 @@
   .section-header-cont {
     width: 100%;
     background-color: $win-bg;
-    height: 26px;
+    height: $tab-size;
     box-sizing: border-box;
     border-top: 1px solid $border-color;
     border-bottom: 1px solid $border-color;
@@ -48,6 +50,8 @@
 
   .section-content-cont {
     width: 100%;
+    // 100% - tab-size
+    height: calc(100% - 26px);
     flex: 1;
 
     .page {
