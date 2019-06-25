@@ -48,7 +48,7 @@ UI는 html + css + javascript를 사용하여 제작.
 jekyll 내부의 변수들을 제어하기 위해 [Liquid](https://shopify.github.io/liquid/){: target="_blank"}를 사용했다.
 
 포스팅은 markdown이용해 작성한다.
-
+
 사용자는 github을 통해 프로젝트를 Fork하고 프로젝트 이름을 "{githubId}.github.io"으로 사용한다면
 
 [github pages](https://pages.github.com/){: target="_blank"}를 통해 빠르게 정적웹사이트 블로그를 만들수 있다.
