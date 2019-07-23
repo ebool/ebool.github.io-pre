@@ -65,6 +65,6 @@ chrome extension에 호기심이 생겨 만들어봤다.
 
 현재 유용하게 사용중이며 조만간 chrome store에도 배포해볼 예정이다.
 
-[이슈](https://github.com/ebool/focus-search-box/issues){: target="_blank"}를 남겨주길 바란다.
+혹시 사용하다 문제가 있으면 [이슈](https://github.com/ebool/focus-search-box/issues){: target="_blank"}를 남겨주길 바란다.
  
 
