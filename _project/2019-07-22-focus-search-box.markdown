@@ -4,13 +4,6 @@ title:  "focus-search-box"
 date:   2019-07-22 22:27:09 +0900
 ---
 
-## 저장소
----
-
-[GITHUB](https://github.com/ebool/focus-search-box){: target="_blank"}
-
-<br>
-
 ## DEMO
 ---
 
@@ -40,6 +33,13 @@ date:   2019-07-22 22:27:09 +0900
 자신이 사용하고 있는 확장프로그램의 단축키를 지정 가능하다.
 
 프로젝트 자체는 복잡할 것이 하나도 없고 extension에 대해 이해한 개발자라면 10분 이내로 만들수 있다. 
+
+<br>
+
+## 저장소
+---
+
+[GITHUB](https://github.com/ebool/focus-search-box){: target="_blank"}
 
 <br>
 
