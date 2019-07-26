@@ -24,7 +24,12 @@ function removeChildNode (node) { while (node.firstChild) node.removeChild(node.
 function unShowChildNode (node) { for (let i of node.children) i.classList.add('none'); }
 
 function drawSectionContent (node) {
-  if (window.route.length === 0) return;
+  let blankPage = document.getElementById('blankPage');
+  if (window.route.length === 0) {
+    blankPage.classList.remove('none');
+    return;
+  }
+  blankPage.classList.add('none');
 
   let res = window.route.filter(i => i.isFocused)[0];
   for (let i of node.children) if (res.path.indexOf(i.id) > -1) i.classList.remove('none');

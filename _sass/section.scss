@@ -58,6 +58,20 @@ $tab-size: 26px;
       background-color: $content-bg;
       height: 100%;
     }
+
+    .blank-page {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+
+      .item {
+        width: 200px;
+      }
+    }
   }
 }
 .section-cont:focus {
