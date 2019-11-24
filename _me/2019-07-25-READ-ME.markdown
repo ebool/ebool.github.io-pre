@@ -2,6 +2,7 @@
 layout: post
 title:  "READ ME"
 date:   2019-07-25 22:00:59 +0900
+published: false
 ---
 
 ## 1. Who am I?
